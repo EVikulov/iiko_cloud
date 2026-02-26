@@ -1,5 +1,5 @@
 {
-    "name": "codeofsolomon/laravel-iiko-cloud-api",
+    "name": "evikulov/iiko_cloud",
     "type": "library",
     "description": "Unofficial Laravel SDK for the iikoCloud API",
     "keywords": [
@@ -23,6 +23,11 @@
         {
             "name": "Suleyman G",
             "email": "jjons8622@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Egor V",
+            "email": "vikuloveo@gmail.com",
             "role": "Developer"
         }
     ],
