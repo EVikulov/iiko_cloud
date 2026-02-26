@@ -40,6 +40,8 @@ class Constants
 
     public const CUSTOMER_CREATE_OR_UPDATE = 'loyalty/iiko/customer/create_or_update';
 
+    public const CUSTOMER_CREATE_CARD = 'loyalty/iiko/customer/card/add';
+
     public const CUSTOMER_CATEGORY = 'loyalty/iiko/customer_category';
 
     public const ADD_CUSTOMER_CATEGORY = 'loyalty/iiko/customer_category/add';
