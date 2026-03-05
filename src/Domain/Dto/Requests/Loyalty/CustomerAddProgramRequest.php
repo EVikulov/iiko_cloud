@@ -1,5 +1,6 @@
 <?php
 
+
 declare(strict_types=1);
 
 namespace IikoApi\Domain\Dto\Requests\Loyalty;
@@ -7,20 +8,18 @@ namespace IikoApi\Domain\Dto\Requests\Loyalty;
 use IikoApi\Domain\Dto\Requests\OneOrganizationRequest;
 use Webmozart\Assert\Assert;
 
-class CustomerCreateCardRequest extends OneOrganizationRequest
+class CustomerAddProgramRequest extends OneOrganizationRequest
 {
     public function __construct(
-        public string $organizationId,
-        public string $customerId,
-        public ?string $cardTrack = null,
-        public ?string $cardNumber = null,
-    ) {
+        public string  $organizationId,
+        public string  $customerId,
+        public string  $programId
+    )
+    {
         parent::__construct($organizationId);
         // ---- Валидация входа ----------------------------------------------
         Assert::uuid($organizationId, 'organizationId должен быть UUID.');
+        Assert::uuid($programId, 'programId должен быть UUID.');
         Assert::uuid($customerId, 'customerId должен быть UUID.');
-
-        Assert::nullOrStringNotEmpty($cardTrack);
-        Assert::nullOrStringNotEmpty($cardNumber);
     }
 }

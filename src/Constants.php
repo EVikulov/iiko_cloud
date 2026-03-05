@@ -42,6 +42,12 @@ class Constants
 
     public const CUSTOMER_CREATE_CARD = 'loyalty/iiko/customer/card/add';
 
+    public const CUSTOMER_REFILL_CARD = 'loyalty/iiko/customer/wallet/topup';
+
+    public const CUSTOMER_WITHDRAW_CARD = 'loyalty/iiko/customer/wallet/chargeoff';
+
+    public const CUSTOMER_ADD_PROGRAM = 'loyalty/iiko/customer/program/add';
+
     public const CUSTOMER_CATEGORY = 'loyalty/iiko/customer_category';
 
     public const ADD_CUSTOMER_CATEGORY = 'loyalty/iiko/customer_category/add';

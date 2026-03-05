@@ -7,20 +7,22 @@ namespace IikoApi\Domain\Dto\Requests\Loyalty;
 use IikoApi\Domain\Dto\Requests\OneOrganizationRequest;
 use Webmozart\Assert\Assert;
 
-class CustomerCreateCardRequest extends OneOrganizationRequest
+class CustomerWithdrawCardRequest extends OneOrganizationRequest
 {
     public function __construct(
         public string $organizationId,
         public string $customerId,
-        public ?string $cardTrack = null,
-        public ?string $cardNumber = null,
+        public string $walletId,
+        public float $sum,
+        public ?string $comment = null
     ) {
         parent::__construct($organizationId);
         // ---- Валидация входа ----------------------------------------------
         Assert::uuid($organizationId, 'organizationId должен быть UUID.');
+        Assert::uuid($walletId, 'walletId должен быть UUID.');
         Assert::uuid($customerId, 'customerId должен быть UUID.');
 
-        Assert::nullOrStringNotEmpty($cardTrack);
-        Assert::nullOrStringNotEmpty($cardNumber);
+        Assert::nullOrStringNotEmpty($sum);
+        Assert::nullOrStringNotEmpty($comment);
     }
 }
