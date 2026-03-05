@@ -22,7 +22,7 @@ class CustomerWithdrawCardRequest extends OneOrganizationRequest
         Assert::uuid($walletId, 'walletId должен быть UUID.');
         Assert::uuid($customerId, 'customerId должен быть UUID.');
 
-        Assert::nullOrStringNotEmpty($sum);
+        Assert::greaterThan($sum, 0);
         Assert::nullOrStringNotEmpty($comment);
     }
 }
