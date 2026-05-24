@@ -24,7 +24,7 @@ class Constants
 
     public const CREATE_ORDER_URL = 'order/create';
 
-    public const GET_TRANSACTION = 
+    public const GET_TRANSACTION_RESPONSE_URL = ''
 
     public const DELIVERY_RESTRICTIONS_URL = 'delivery_restrictions';
 
