@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IikoApi\Domain\Dto\Responses\Transaction;
-
-use Certificate;
-use Coupon;
+namespace IikoApi\Domain\Dto\Responses\Report;
 
 final readonly class Transaction
 {
@@ -34,7 +31,7 @@ final readonly class Transaction
         public string $typeName,
         public string $walletId,
         public \DateTimeImmutable $whenCreated,
-        public \DateTimeImmutable $whenCreatedOrder,
+        public ?\DateTimeImmutable $whenCreatedOrder,
         public string $id,
         public bool $isDelivery,
         public bool $isIgnored,
@@ -73,8 +70,10 @@ final readonly class Transaction
             type: (int) $d['type'],
             typeName: (string) $d['typeName'],
             walletId: (string) $d['walletId'],
-            whenCreated: new \DateTimeImmutable($d['whenCreated']),
-            whenCreatedOrder: new \DateTimeImmutable($d['whenCreatedOrder']),
+            whenCreated: new \DateTimeImmutable((string) $d['whenCreated']),
+            whenCreatedOrder: isset($d['whenCreatedOrder']) && $d['whenCreatedOrder'] !== null
+                ? new \DateTimeImmutable((string) $d['whenCreatedOrder'])
+                : null,
             id: (string) $d['id'],
             isDelivery: (bool) $d['isDelivery'],
             isIgnored: (bool) $d['isIgnored'],

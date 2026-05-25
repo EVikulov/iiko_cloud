@@ -14,8 +14,8 @@ final readonly class ReportResponse
     public static function fromArray(array $d): self
     {
         return new self(
-            correlationId: $d['correlationId'],
-            Report: Report::fromArray($d['Report']),
+            correlationId: (string) ($d['correlationId'] ?? ''),
+            Report: Report::fromArray($d['report'] ?? $d),
         );
     }
 }

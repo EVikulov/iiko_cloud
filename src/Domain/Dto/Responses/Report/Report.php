@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace IikoApi\Domain\Dto\Responses\Report;
 
-use IikoApi\Domain\Dto\Responses\Transaction\Transaction;
-
 final readonly class Report
 {
+    /** @param Transaction[]|null $transactions */
     public function __construct(
-        public ?Transaction $transactions, //
+        public ?array $transactions, //
 
         public ?string $lastTransactionId, //
         public ?string $lastRevision, //
@@ -21,11 +20,17 @@ final readonly class Report
     public static function fromArray(array $d): self
     {
         return new self(
-            lastRevision: $d['lastRevision'],
-            lastTransactionId: $d['lastTransactionId'],
-            pageSize: $d['pageSize'],
+            lastRevision: isset($d['lastRevision']) && $d['lastRevision'] !== null
+                ? (string) $d['lastRevision']
+                : null,
+            lastTransactionId: isset($d['lastTransactionId']) && $d['lastTransactionId'] !== null
+                ? (string) $d['lastTransactionId']
+                : null,
+            pageSize: (int) $d['pageSize'],
 
-            transactions: isset($d['transactions']) ? Transaction::fromArray($d['transactions']) : null,
+            transactions: isset($d['transactions'])
+                ? array_map(static fn (array $t): Transaction => Transaction::fromArray($t), $d['transactions'])
+                : null,
         );
     }
 }

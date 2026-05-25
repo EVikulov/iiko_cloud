@@ -1,4 +1,9 @@
 <?php
+
+declare(strict_types=1);
+
+namespace IikoApi\Domain\Dto\Responses\Report;
+
 final readonly class Certificate
 {
     public function __construct(

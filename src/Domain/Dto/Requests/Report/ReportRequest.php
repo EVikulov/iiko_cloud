@@ -34,6 +34,5 @@ class ReportRequest extends BaseRequest
     ) {
         Assert::uuid($organizationId, 'organizationId должен быть валидным UUID.');
         Assert::uuid($customerId, 'customerId должен быть валидным UUID.');
-        Assert::uuid($lastTransactionId, 'lastTransactionId должен быть валидным UUID.');
     }
 }
