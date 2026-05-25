@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace IikoApi\Application\Services;
 
 use IikoApi\Constants;
-use IikoApi\Domain\Dto\Requests\CreateDelivery\Request;
+use IikoApi\Domain\Dto\Requests\Report\ReportRequest;
 use IikoApi\Domain\Dto\Responses\Report\ReportResponse;
 
 final class ReportService extends BaseService
@@ -13,7 +13,7 @@ final class ReportService extends BaseService
     /**
      * Summary of getTransactionReport
      */
-    public function getTransactionReport(Request $request): ReportResponse
+    public function getTransactionReport(ReportRequest $request): ReportResponse
     {
         $response = $this->authorizedRequest(
             'POST',

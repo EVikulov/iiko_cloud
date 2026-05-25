@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace IikoApi\Domain\Dto\Requests\Report;
 
+use IikoApi\Domain\Dto\Requests\BaseRequest;
 use Webmozart\Assert\Assert;
 
 /**
- * /terminals/groups
- *
- * Возвращает терминальные группы организаций.
+ * Запрос отчёта по транзакциям лояльности.
  *
  * • `customerId` — UUID пользователя
- * • `revision` — Отчет с момента внесения изменений. Включается, если указан LastTransactionId.
- * • `lastTransactionId` - Отчет с момента совершения транзакции. Исключено. Не может быть использовано без revision.
- * • `pageSize` - Номер страницы
- * • `organizationId` - UUID организации
- *
- * Объект → **immutable** (`readonly`) и валидируется при создании.
+ * • `revision` — отчёт с момента внесения изменений (нужен при указании `lastTransactionId`)
+ * • `lastTransactionId` — отчёт с момента транзакции (требует `revision`)
+ * • `pageSize` — размер страницы
+ * • `organizationId` — UUID организации
  */
-class TerminalGroupRequest extends MinimalRequest
+class ReportRequest extends BaseRequest
 {
     /**
      * @param string  $customerId
@@ -38,7 +35,5 @@ class TerminalGroupRequest extends MinimalRequest
         Assert::uuid($organizationId, 'organizationId должен быть валидным UUID.');
         Assert::uuid($customerId, 'customerId должен быть валидным UUID.');
         Assert::uuid($lastTransactionId, 'lastTransactionId должен быть валидным UUID.');
-
-        parent::__construct($customerId);
     }
 }
