@@ -8,7 +8,7 @@ use IikoApi\Constants;
 use IikoApi\Domain\Dto\Requests\CreateDelivery\Request;
 use IikoApi\Domain\Dto\Responses\Report\ReportResponse;
 
-final class OrderService extends BaseService
+final class ReportService extends BaseService
 {
     /**
      * Summary of getTransactionReport
@@ -17,7 +17,7 @@ final class OrderService extends BaseService
     {
         $response = $this->authorizedRequest(
             'POST',
-            Constants::CREATE_ORDER_URL,
+            Constants::GET_TRANSACTION_RESPONSE_URL,
             $request->toArray(),
         );
 
